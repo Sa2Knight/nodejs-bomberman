@@ -1,0 +1,8 @@
+<% include ../header %>
+  <h1>新規作成</h1>
+  <form method="POST" action="/posts/create">
+    <p>タイトル: <input type="text" name="title"></p>
+    <p>本文: <input type="text" name="body"></p>
+    <p><button type="submit">作成</button></p>
+  </form>
+<% include ../footer %>

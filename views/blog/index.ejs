@@ -1,0 +1,16 @@
+<% include ../header %>
+  <h1>Posts</h1>
+  <a href="/posts/new">新規作成</a>
+  <ul>
+    <% posts.forEach(function(post) { %>
+    <li>
+      <a href="/posts/<%= post.id %>"><%= post.title %></a>
+      <a href="/posts/<%= post.id %>/edit">編集</a>
+      <form style="display: inline" method="POST" action="/posts/delete/">
+        <button type="submit">削除</button>
+        <input type="hidden" name="id" value="<%= post.id %>">
+      </form>
+    </li>
+    <% }); %>
+  </ul>
+<% include ../footer %>
