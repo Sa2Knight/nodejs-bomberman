@@ -10,7 +10,8 @@ var socket = (function() {
     redrowMap(map);
   });
   socket.on('dead' , function() {
-    alertDead();
+    // 爆風描画の時間差を設ける
+    setTimeout(alertDead , 300);
   });
   return socket;
 })();

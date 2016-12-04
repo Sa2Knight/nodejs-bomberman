@@ -53,9 +53,9 @@ io.sockets.on('connection' , function(socket) {
   master.addPlayer(socket.id); 
 });
 setInterval(function() {
+  io.sockets.emit('map' , master.map.maps);
   var deadClients = master.checkPlayerAlive();
   deadClients.forEach(function(c) {
     io.sockets.to(c).emit('dead');
   });
-  io.sockets.emit('map' , master.map.maps);
 } , 100);
