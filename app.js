@@ -41,18 +41,17 @@ io.sockets.on('connection' , function(socket) {
   // 矢印キー入力
   socket.on('move' , function(direction) {
     master.movePlayer(socket.id , direction);
-    io.sockets.emit('map' , master.map.maps);
   });
   // 爆弾設置
   socket.on('put' , function(direction) {
     master.putBom(socket.id , direction);
-    io.sockets.emit('map' , master.map.maps);
   });
   // 切断
   socket.on('disconnect' , function() {
     master.removePlayer(socket.id);
-    io.sockets.emit('map' , master.map.maps);
   });
   master.addPlayer(socket.id);
-  io.sockets.emit('map' , master.map.maps);
+  setInterval(function() {
+    io.sockets.emit('map' , master.map.maps);
+  } , 100);
 });

@@ -31,8 +31,8 @@ var Map = function() {
   };
 
   /* 要素を設置 */
-  this.set = function(x , y , element) {
-    if (! element in this.elements) {
+  this.set = function(x , y , element , force) {
+    if (! element in this.elements && ! force) {
       return false;
     }
     if (! this.isInnner) {
@@ -56,7 +56,27 @@ var Map = function() {
 
   /* 爆弾を設置 */
   this.setBom = function(x , y) {
+    var _this = this;
     this.set(x , y , this.elements.BOM);
+    setTimeout(function() {
+      _this.reset(x , y);
+      _this.setBlast(x , y);
+    } , 2500);
+  };
+
+  /* 爆風を設置 */
+  this.setBlast = function(x , y) {
+    var _this = this;
+    for (var i = 0; i < 15; i++) {
+      _this.set(i , y , _this.elements.BLAST , true);
+      _this.set(x , i , _this.elements.BLAST , true);
+    }
+    setTimeout(function() {
+      for (var i = 0; i < 15; i++) {
+        _this.reset(i , y);
+        _this.reset(x , i);
+      }
+    } , 1000);
   };
 
   /* 特定位置に何もないことを確認 */
