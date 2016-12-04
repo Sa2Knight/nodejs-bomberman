@@ -44,6 +44,11 @@ var Map = function() {
     this.maps[x][y] = element;
   }
 
+  /* 特定座標をクリア */
+  this.reset = function(x , y) {
+    this.set(x , y , this.elements.NONE);
+  }
+
   /* プレイヤーを設置 */
   this.setPlayer = function(id , newX , newY , oldX , oldY) {
     if (oldX && oldY) {

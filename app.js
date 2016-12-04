@@ -41,6 +41,7 @@ io.sockets.on('connection' , function(socket) {
   socket.on('message' , function(data) {
   });
   socket.on('disconnect' , function() {
+    master.removePlayer(socket.id);
   });
   master.addPlayer(socket.id);
   io.sockets.emit('map' , master.map.maps);
