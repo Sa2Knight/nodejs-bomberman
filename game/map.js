@@ -28,7 +28,7 @@ var Map = function() {
     } else {
       return true;
     }
-  }
+  };
 
   /* 要素を設置 */
   this.set = function(x , y , element) {
@@ -39,12 +39,12 @@ var Map = function() {
       return false;
     }
     this.maps[x][y] = element;
-  }
+  };
 
   /* 特定座標をクリア */
   this.reset = function(x , y) {
     this.set(x , y , this.elements.NONE);
-  }
+  };
 
   /* プレイヤーを設置 */
   this.setPlayer = function(id , newX , newY , oldX , oldY) {
@@ -52,7 +52,12 @@ var Map = function() {
       this.set(oldX , oldY , this.elements.NONE);
     }
     this.set(newX , newY , id);
-  }
+  };
+
+  /* 爆弾を設置 */
+  this.setBom = function(x , y) {
+    this.set(x , y , this.elements.BOM);
+  };
 
   /* 特定位置に何もないことを確認 */
   this.isEmpty = function(x , y) {
@@ -61,7 +66,7 @@ var Map = function() {
     } else {
       return false;
     }
-  }
+  };
 
   /* 空いているランダムな位置を戻す */
   this.randomPoint = function() {

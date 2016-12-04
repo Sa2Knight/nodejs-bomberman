@@ -11,7 +11,7 @@ var Master = function(Map , Player) {
   this.addPlayer = function(id) {
     var newPlayer = new Player(id , this.map);
     this.players[id] = newPlayer;
-  }
+  };
 
   /*
     プレイヤーを削除
@@ -23,7 +23,7 @@ var Master = function(Map , Player) {
       this.map.reset(x , y);
       delete this.players[id];
     }
-  }
+  };
 
   /*
     プレイヤーを移動
@@ -39,7 +39,23 @@ var Master = function(Map , Player) {
     } else if (direction == 'right') {
       player.moveRight();
     }
-  }
+  };
+
+  /*
+    爆弾設置
+  */
+  this.putBom = function(playerId , direction) {
+    var player = this.players[playerId];
+    if (direction == 'up') {
+      player.putUp();
+    } else if (direction == 'down') {
+      player.putDown();
+    } else if (direction == 'left') {
+      player.putLeft();
+    } else if (direction == 'right') {
+      player.putRight();
+    }
+  };
 };
 
 module.exports = Master;

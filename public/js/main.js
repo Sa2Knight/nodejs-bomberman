@@ -59,21 +59,28 @@ $(function() {
     キー入力イベント
   */
   $('html').keyup(function(e){
+    function emit(direction , pushedShift) {
+      if (pushedShift) {
+        socket.emit('put' , direction);
+      } else {
+        socket.emit('move' , direction);
+      }
+    }
     switch(e.which){
       case 39: // Key[→]
-        socket.emit('move' , 'right');
+        emit('right' , e.shiftKey);
       break;
 
       case 37: // Key[←]
-        socket.emit('move' , 'left');
+        emit('left' , e.shiftKey);
       break;
 
       case 38: // Key[↑]
-        socket.emit('move' , 'up');
+        emit('up' , e.shiftKey);
       break;
 
       case 40: // Key[↓]
-        socket.emit('move' , 'down');
+        emit('down' , e.shiftKey);
       break;
     }
   });
