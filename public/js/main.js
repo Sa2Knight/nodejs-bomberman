@@ -44,7 +44,7 @@ function getCharacter(element) {
   マップデータを元にマップを描画
 */
 function redrowMap(map) {
-  var columns = $('table.map td');
+  var columns = $('.map td');
   for (var i = 0; i < 15; i++) {
     for (var s = 0; s < 15; s++) {
       var c = (i * 15) + s;
@@ -54,10 +54,10 @@ function redrowMap(map) {
   }
 }
 
-/*
-  キー入力イベント
-*/
 $(function() {
+  /*
+    キー入力イベント
+  */
   $('html').keyup(function(e){
     switch(e.which){
       case 39: // Key[→]
@@ -76,5 +76,11 @@ $(function() {
         socket.emit('move' , 'down');
       break;
     }
+  });
+  /*
+    矢印ボタンイベント(スマフォ/タブレット用)
+  */
+  $('.key-buttons button').click(function() {
+    socket.emit('move' , $(this).val());
   });
 });

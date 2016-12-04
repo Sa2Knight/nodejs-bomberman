@@ -1,11 +1,22 @@
 <% include header %>
-<table class='map'>
-  <% for (var i = 0; i < 15; i++) { %>
-    <tr>
-    <% for (var s = 0; s < 15; s++) { %>
-      <td></td>
+
+<div class='map'>
+  <table>
+    <% for (var i = 0; i < 15; i++) { %>
+      <tr>
+      <% for (var s = 0; s < 15; s++) { %>
+        <td></td>
+      <% } %>
+      </tr>
     <% } %>
-    </tr>
-  <% } %>
-</table>
+  </table>
+</div>
+
+<div class='key-buttons'>
+  <button value="left">←</button>
+  <button value="up">↑</button>
+  <button value="down">↓</button>
+  <button value="right">→</button>
+</div>
+
 <% include footer %>
