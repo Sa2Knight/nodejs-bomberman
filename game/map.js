@@ -52,7 +52,7 @@ var Map = function() {
   /* プレイヤーを設置 */
   this.setPlayer = function(id , newX , newY , oldX , oldY) {
     if (oldX && oldY) {
-      this.set(oldX , oldY , this.element.NONE);
+      this.set(oldX , oldY , this.elements.NONE);
     }
     this.set(newX , newY , id);
   }

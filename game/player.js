@@ -9,8 +9,8 @@ var Player = function(_id , _map) {
 
   /* プレイヤーを移動 */
   this.move = function(x , y) {
-    if (map.isEmpty(x , y)) {
-      map.setPlayer(this.id , x , y , this.x , this.y);
+    if (this.map.isEmpty(x , y)) {
+      this.map.setPlayer(this.id , x , y , this.x , this.y);
       this.x = x;
       this.y = y;
     }

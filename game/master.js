@@ -24,6 +24,22 @@ var Master = function(Map , Player) {
       delete this.players[id];
     }
   }
+
+  /*
+    プレイヤーを移動
+  */
+  this.movePlayer = function(id , direction) {
+    var player = this.players[id];
+    if (direction == 'up') {
+      player.moveUp();
+    } else if (direction == 'down') {
+      player.moveDown();
+    } else if (direction == 'left') {
+      player.moveLeft();
+    } else if (direction == 'right') {
+      player.moveRight();
+    }
+  }
 };
 
 module.exports = Master;

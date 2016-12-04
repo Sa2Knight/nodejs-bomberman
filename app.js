@@ -38,8 +38,12 @@ var io = socketIO.listen(server);     //socket.io起動
 
 // ソケット通信内容を定義
 io.sockets.on('connection' , function(socket) {
-  socket.on('message' , function(data) {
+  // 矢印キー入力
+  socket.on('move' , function(direction) {
+    master.movePlayer(socket.id , direction);
+    io.sockets.emit('map' , master.map.maps);
   });
+  // 切断
   socket.on('disconnect' , function() {
     master.removePlayer(socket.id);
   });
