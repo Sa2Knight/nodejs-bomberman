@@ -88,6 +88,21 @@ var Map = function() {
     }
   };
 
+  /* 指定したプレイヤーの座標を取得 */
+  this.playerPosition = function(id) {
+    for (var i = 0; i < 15; i++) {
+      for (var s = 0; s < 15; s++) {
+        if (this.maps[s][i] == id) {
+          return {
+            x: s,
+            y: i
+          }
+        }
+      }
+    }
+    return false;
+  }
+
   /* 空いているランダムな位置を戻す */
   this.randomPoint = function() {
     do {

@@ -50,8 +50,12 @@ io.sockets.on('connection' , function(socket) {
   socket.on('disconnect' , function() {
     master.removePlayer(socket.id);
   });
-  master.addPlayer(socket.id);
-  setInterval(function() {
-    io.sockets.emit('map' , master.map.maps);
-  } , 100);
+  master.addPlayer(socket.id); 
 });
+setInterval(function() {
+  var deadClients = master.checkPlayerAlive();
+  deadClients.forEach(function(c) {
+    io.sockets.to(c).emit('dead');
+  });
+  io.sockets.emit('map' , master.map.maps);
+} , 100);

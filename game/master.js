@@ -30,6 +30,9 @@ var Master = function(Map , Player) {
   */
   this.movePlayer = function(id , direction) {
     var player = this.players[id];
+    if (! player) {
+      return false;
+    }
     if (direction == 'up') {
       player.moveUp();
     } else if (direction == 'down') {
@@ -46,6 +49,9 @@ var Master = function(Map , Player) {
   */
   this.putBom = function(playerId , direction) {
     var player = this.players[playerId];
+    if (! player) {
+      return false;
+    }
     if (direction == 'up') {
       player.putUp();
     } else if (direction == 'down') {
@@ -55,6 +61,21 @@ var Master = function(Map , Player) {
     } else if (direction == 'right') {
       player.putRight();
     }
+  };
+
+  /*
+    爆風に巻き込まれたプレイヤーを殺す
+  */
+  this.checkPlayerAlive = function () {
+    var _this = this;
+    var keys = Object.keys(this.players);
+    var deadPlayers = keys.filter(function(k) {
+      return _this.map.playerPosition(k) === false;
+    });
+    deadPlayers.forEach(function(p) {
+      delete _this.players[p];
+    });
+    return deadPlayers;
   };
 };
 

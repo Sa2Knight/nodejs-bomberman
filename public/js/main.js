@@ -9,6 +9,9 @@ var socket = (function() {
   socket.on('map' , function(map) {
     redrowMap(map);
   });
+  socket.on('dead' , function() {
+    alertDead();
+  });
   return socket;
 })();
 
@@ -52,6 +55,14 @@ function redrowMap(map) {
       $(columns[c]).text(getCharacter(element));
     }
   }
+}
+
+/*
+  死亡を通知
+*/
+function alertDead() {
+  alert('死にました');
+  location.reload();
 }
 
 $(function() {
