@@ -29,7 +29,7 @@ app.use(express.static(__dirname + '/public'));
 app.get('/' , router.index);
 
 // ゲームマスターを準備
-var master = new Master(new Map);
+var master = new Master(Map , Player);
 
 // サーバ起動
 var server = http.createServer(app);  //expressを用いてWebサーバ準備
@@ -42,6 +42,6 @@ io.sockets.on('connection' , function(socket) {
   });
   socket.on('disconnect' , function() {
   });
-  master.addPlayer(new Player(socket.id , master.map));
+  master.addPlayer(socket.id);
   io.sockets.emit('map' , master.map.maps);
 });
