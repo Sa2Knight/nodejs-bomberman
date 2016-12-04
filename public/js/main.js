@@ -16,7 +16,7 @@ var socket = (function() {
   マップ定義
 */
 var characters = {
-  'NONE' : '',
+  'NONE' : '　',
   'BOM': '●',
   'BLAST': '☓',
   'BLOCK': '■',

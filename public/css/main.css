@@ -1,4 +1,5 @@
 table.map td {
+  border: 1px solid #bbbbbb;
   width: 30px;
   height: 30px;
 }
