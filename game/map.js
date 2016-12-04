@@ -18,9 +18,6 @@ var Map = function() {
       }
       maps[i] = rows;
     }
-    maps[4][5] = map.elements.BOM;
-    maps[14][13] = map.elements.BLAST;
-    maps[2][9] = map.elements.BLOCK;
     return maps;
   })(this);
 
@@ -51,7 +48,7 @@ var Map = function() {
 
   /* プレイヤーを設置 */
   this.setPlayer = function(id , newX , newY , oldX , oldY) {
-    if (oldX && oldY) {
+    if (oldX !== undefined && oldY !== undefined) {
       this.set(oldX , oldY , this.elements.NONE);
     }
     this.set(newX , newY , id);
