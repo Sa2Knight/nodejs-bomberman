@@ -14,21 +14,21 @@ sudo npm install socket.io
 ```
 $ tree
 .
-├── app.js
+├── app.js              //システムのメイン
 ├── game
-│   ├── map.js
-│   ├── master.js
-│   └── player.js
+│   ├── map.js          //15*15のマップを制御
+│   ├── master.js       //ゲーム全体の進行管理
+│   └── player.js       //プレイヤーを制御
 ├── public
 │   ├── css
-│   │   └── main.css
+│   │   └── main.css    //クライアントスタイルシート
 │   └── js
-│       └── main.js
-├── README.md
+│       └── main.js     //クライアントスクリプト
+├── README.md           //これ
 ├── routes
-│   └── router.js
+│   └── router.js       //ルーティングスクリプト
 └── views
-    ├── footer.ejs
-    ├── header.ejs
-    └── index.ejs
+    ├── footer.ejs      //フッタービュー
+    ├── header.ejs      //ヘッダービュー
+    └── index.ejs       //メインビュー
  ```
