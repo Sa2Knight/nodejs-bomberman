@@ -1,6 +1,10 @@
 # nodejs-bomberman
 socket.ioで作るクソゲー
 
+### スクリーンショット
+
+![SS](https://raw.githubusercontent.com/Sa2Knight/screenshot/master/nodejs_tryal.png)
+
 ### インストール
 ```
 sudo npm install express
